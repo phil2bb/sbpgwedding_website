@@ -22,7 +22,7 @@
 
 const FOLDER_NAME = "Wedding Guest Uploads";
 // Optional: paste a specific Drive folder ID here instead (from its URL).
-const FOLDER_ID = "";
+const FOLDER_ID = "1J46xns1RwnUS8m_9y3uZNMOrLVinZxmZ";
 // Must match data-upload-key in share/index.html. Stops random bots, not a password.
 const UPLOAD_KEY = "sbpg-2026-07-31";
 // Apps Script accepts ~50 MB per request; base64 adds a third, so ~36 MB per file.
