@@ -15,7 +15,7 @@
     return;
   }
 
-  photos.forEach(function (p, i) {
+  var buttons = photos.map(function (p, i) {
     var b = document.createElement("button");
     b.type = "button";
     b.setAttribute("aria-label", "Open photo " + (i + 1) + " of " + photos.length);
@@ -27,8 +27,37 @@
     if (p.w && p.h) { img.width = p.w; img.height = p.h; }
     b.appendChild(img);
     b.addEventListener("click", function () { open(i); });
-    grid.appendChild(b);
+    return b;
   });
+
+  // Masonry: put each photo into the currently shortest column (by aspect ratio),
+  // so the order runs across the page rather than down each column.
+  var colCount = 0;
+  function layout() {
+    var w = grid.clientWidth;
+    var n = w < 600 ? 2 : w < 900 ? 2 : w < 1300 ? 3 : 4;
+    if (window.innerWidth <= 600) n = 2;
+    if (n === colCount) return;
+    colCount = n;
+    grid.innerHTML = "";
+    var cols = [], heights = [];
+    for (var c = 0; c < n; c++) {
+      var col = document.createElement("div");
+      col.className = "gallery-col";
+      grid.appendChild(col);
+      cols.push(col);
+      heights.push(0);
+    }
+    buttons.forEach(function (b, i) {
+      var p = photos[i];
+      var k = heights.indexOf(Math.min.apply(null, heights));
+      cols[k].appendChild(b);
+      heights[k] += (p.w && p.h ? p.h / p.w : 1) + 0.03;
+    });
+  }
+  layout();
+  var t;
+  window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(layout, 150); });
 
   function show(i) {
     current = (i + photos.length) % photos.length;

@@ -209,6 +209,11 @@ h1, h2, h3 {
   text-align: center;
 }
 
+.banner.compact { height: clamp(150px, 18vw, 240px); }
+.banner.compact > img { object-position: center 78%; }
+.banner.compact h1 { font-size: clamp(2.2rem, 5.5vw, 4.4rem); border-radius: 10px; }
+.banner.compact + .section { padding-top: clamp(20px, 3vw, 36px); }
+
 /* ---------- Content sections ---------- */
 
 .section {
@@ -247,10 +252,14 @@ h1, h2, h3 {
 
 /* ---------- Gallery ---------- */
 
+/* js/gallery.js splits photos into .gallery-col columns, placing each photo
+   in the shortest column so they read roughly left-to-right in time order */
 .gallery-grid {
-  columns: 3 280px;
-  column-gap: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
 }
+.gallery-col { flex: 1; min-width: 0; }
 
 .gallery-grid button {
   display: block;
@@ -266,7 +275,7 @@ h1, h2, h3 {
 }
 
 @media (max-width: 600px) {
-  .gallery-grid { columns: 2; column-gap: 8px; }
+  .gallery-grid { gap: 8px; }
   .gallery-grid button { margin-bottom: 8px; border-radius: 6px; }
 }
 
