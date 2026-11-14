@@ -132,6 +132,11 @@ h1, h2, h3 {
   object-position: center 60%;
 }
 
+/* wide screens crop the portrait photo hard; aim higher so faces sit below the text */
+@media (min-aspect-ratio: 1/1) {
+  .hero > img { object-position: center 30%; }
+}
+
 .hero::after {
   /* soft shade so white text stays readable over the photo */
   content: "";
