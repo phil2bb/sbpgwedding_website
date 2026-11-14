@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Share Your Photos — Steph and Phil's Wedding</title>
+  <meta name="description" content="Upload your photos from Steph and Phil's wedding.">
+  <meta property="og:title" content="Share Your Photos — Steph and Phil's Wedding">
+  <meta property="og:description" content="We'd love to see the wedding through your eyes. Upload your photos here.">
+  <meta property="og:image" content="https://www.sbpgwedding.com/images/glen-manor.jpg">
+  <link rel="icon" href="../images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="site-title" href="../">Steph and Phil's Wedding</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+        <svg width="26" height="18" viewBox="0 0 26 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M0 1h26M0 9h26M0 17h26"/></svg>
+      </button>
+      <nav class="site-nav">
+        <a href="../">Home</a>
+        <a href="../gallery/">Gallery</a>
+        <a href="./" aria-current="page">Share Your Photos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <img src="../images/foot-bridge.jpg" alt="">
+      <h1>Share Your Photos</h1>
+    </section>
+
+    <section class="section narrow">
+      <h2>We&rsquo;d love to see your pictures</h2>
+      <p class="lede">Thank you for being part of our day! If you snapped any photos or videos &mdash; candids, dance-floor shots, selfies, all of it &mdash; please send them our way.</p>
+
+      <ol class="steps">
+        <li>
+          <span class="num">1</span>
+          <h3>Tap the button</h3>
+          <p>It opens our shared upload folder.</p>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <h3>Choose your photos</h3>
+          <p>Pick as many photos and videos as you like.</p>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <h3>Add your name</h3>
+          <p>So we know who to thank!</p>
+        </li>
+      </ol>
+
+      <!--
+        UPLOAD LINK: set data-upload-url below to the upload link
+        (e.g. a Dropbox File Request or Google Drive upload link).
+        While it is empty, the button shows "Upload opening soon".
+      -->
+      <a class="button" id="upload-button" data-upload-url="" href="#" target="_blank" rel="noopener">Upload Your Photos</a>
+
+      <p class="note">Full-resolution originals are best &mdash; no need to shrink them first.</p>
+
+      <hr class="rule">
+      <p class="lede">Want to see what everyone else captured?</p>
+      <a class="button outline" href="../gallery/">View the Gallery</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="names">Steph &amp; Phil</p>
+    <p>July 31, 2026 &middot; Glen Manor House, Portsmouth, RI</p>
+  </footer>
+
+  <script src="../js/site.js"></script>
+  <script>
+    (function () {
+      var b = document.getElementById("upload-button");
+      var url = b.getAttribute("data-upload-url");
+      if (url) { b.href = url; }
+      else { b.textContent = "Upload opening soon"; b.setAttribute("aria-disabled", "true"); b.removeAttribute("href"); }
+    })();
+  </script>
+</body>
+</html>

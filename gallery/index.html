@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery — Steph and Phil's Wedding</title>
+  <meta name="description" content="Photos from Steph and Phil's wedding at Glen Manor House.">
+  <meta property="og:title" content="Gallery — Steph and Phil's Wedding">
+  <meta property="og:image" content="https://www.sbpgwedding.com/images/foot-bridge.jpg">
+  <link rel="icon" href="../images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="site-title" href="../">Steph and Phil's Wedding</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+        <svg width="26" height="18" viewBox="0 0 26 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M0 1h26M0 9h26M0 17h26"/></svg>
+      </button>
+      <nav class="site-nav">
+        <a href="../">Home</a>
+        <a href="./" aria-current="page">Gallery</a>
+        <a href="../share/">Share Your Photos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <img src="../images/foot-bridge.jpg" alt="">
+      <h1>Gallery</h1>
+    </section>
+
+    <section class="section">
+      <div class="gallery-grid" id="gallery"></div>
+
+      <div class="gallery-empty" id="gallery-empty" hidden>
+        <img src="../images/vineyard.jpg" alt="Watercolour of a vineyard">
+        <h2>Photos coming soon</h2>
+        <p class="lede">We&rsquo;re gathering our favourite moments from the day. Check back shortly!</p>
+      </div>
+
+      <hr class="rule">
+      <div style="text-align:center">
+        <h2>Have photos from the day?</h2>
+        <p class="lede">We&rsquo;d love to see the wedding through your eyes.</p>
+        <a class="button" href="../share/">Share Your Photos</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <img alt="">
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <button class="lb-prev" aria-label="Previous photo">&#8249;</button>
+    <button class="lb-next" aria-label="Next photo">&#8250;</button>
+    <div class="lb-count"></div>
+  </div>
+
+  <footer class="site-footer">
+    <p class="names">Steph &amp; Phil</p>
+    <p>July 31, 2026 &middot; Glen Manor House, Portsmouth, RI</p>
+  </footer>
+
+  <script src="../js/site.js"></script>
+  <script src="photos.js"></script>
+  <script src="../js/gallery.js"></script>
+</body>
+</html>

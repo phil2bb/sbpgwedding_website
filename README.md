@@ -1,12 +1,28 @@
-# sbpgwedding_website — original_site snapshot
+# Steph & Phil's Wedding — www.sbpgwedding.com
 
-This branch is a static snapshot of the original Squarespace site at
-https://www.sbpgwedding.com, captured 2026-11-14. It is kept as a reference
-for the theme (fonts, colours, images, layout) while the new site is built on `main`.
+Static site hosted on GitHub Pages from the `main` branch (custom domain set in `CNAME`).
+The original Squarespace site is preserved on the `original_site` branch.
 
-Pages: `index.html` (Home), `rsvp/`, `rsvp-1/`, `itinerary/`, `shuttle-schedule/`,
-`accommodations/`, `local-recomendations/`, `registry/`.
-Downloaded CSS, JS, fonts and images are under `assets/<host>/...`.
+## Pages
+- `index.html` — Home
+- `gallery/` — photo gallery with a full-screen viewer
+- `share/` — where guests upload their photos
 
-To view it, serve the folder locally (e.g. `python -m http.server`) and open
-http://localhost:8000. Squarespace-backed features (RSVP form submission, cart) do not work offline.
+Shared styling is in `css/style.css` (Marcellus + PT Serif, terracotta `#d4967d`, linen `#e5e3dc`).
+
+## Adding photos to the gallery
+Requires Python with Pillow (`pip install pillow`; add `pillow-heif` for iPhone HEIC files).
+
+```
+python tools/add_photos.py "C:/path/to/folder/of/photos"
+git add gallery && git commit -m "Add photos" && git push
+```
+
+The script makes web-sized copies and thumbnails (rotation fixed, location data removed)
+in `gallery/photos/` and rebuilds `gallery/photos.js`, sorted by when each photo was taken.
+To remove a photo, delete it from both `gallery/photos/full` and `gallery/photos/thumbs`, then run
+`python tools/add_photos.py` with no folder.
+
+## Guest upload link
+Set `data-upload-url` on the upload button in `share/index.html`. While it is empty the button
+reads "Upload opening soon".
