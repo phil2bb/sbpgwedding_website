@@ -23,6 +23,13 @@ in `gallery/photos/` and rebuilds `gallery/photos.js`, sorted by when each photo
 To remove a photo, delete it from both `gallery/photos/full` and `gallery/photos/thumbs`, then run
 `python tools/add_photos.py` with no folder.
 
-## Guest upload link
-Set `data-upload-url` on the upload button in `share/index.html`. While it is empty the button
-reads "Upload opening soon".
+## Guest uploads (Google Drive, no sign-in)
+The upload form on `share/` sends files to a Google Apps Script web app that saves them
+into a Google Drive folder ("Wedding Guest Uploads", one sub-folder per guest name).
+
+1. Open https://script.google.com -> New project, paste in `tools/google-apps-script/Code.gs`, save.
+2. Deploy -> New deployment -> Web app. Execute as: **Me**. Who has access: **Anyone**. Authorize.
+3. Put the web app URL (ends in `/exec`) into `data-upload-endpoint` in `share/index.html`.
+
+`data-upload-key` in the page must match `UPLOAD_KEY` in the script. Limit is ~35 MB per file
+(Apps Script request size). While the endpoint is empty the form shows "Uploads opening soon".

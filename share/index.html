@@ -30,7 +30,7 @@
   </header>
 
   <main>
-    <section class="banner">
+    <section class="banner compact">
       <img src="../images/foot-bridge.jpg" alt="">
       <h1>Share Your Photos</h1>
     </section>
@@ -42,29 +42,48 @@
       <ol class="steps">
         <li>
           <span class="num">1</span>
-          <h3>Tap the button</h3>
-          <p>It opens our shared upload folder.</p>
+          <h3>Add your name</h3>
+          <p>So we know who to thank!</p>
         </li>
         <li>
           <span class="num">2</span>
           <h3>Choose your photos</h3>
-          <p>Pick as many photos and videos as you like.</p>
+          <p>Pick as many photos and short videos as you like.</p>
         </li>
         <li>
           <span class="num">3</span>
-          <h3>Add your name</h3>
-          <p>So we know who to thank!</p>
+          <h3>Tap upload</h3>
+          <p>No sign-in needed. Keep this page open until it&rsquo;s done.</p>
         </li>
       </ol>
 
       <!--
-        UPLOAD LINK: set data-upload-url below to the upload link
-        (e.g. a Dropbox File Request or Google Drive upload link).
-        While it is empty, the button shows "Upload opening soon".
+        UPLOAD ENDPOINT: paste the Google Apps Script web app URL (ends in /exec)
+        into data-upload-endpoint. Setup: tools/google-apps-script/Code.gs.
+        data-upload-key must match UPLOAD_KEY in that script.
+        While the endpoint is empty, the form shows "Uploads opening soon".
       -->
-      <a class="button" id="upload-button" data-upload-url="" href="#" target="_blank" rel="noopener">Upload Your Photos</a>
+      <form class="uploader" id="uploader" data-upload-endpoint="" data-upload-key="sbpg-2026-07-31" novalidate>
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" id="up-name" name="name" maxlength="60" autocomplete="name" placeholder="e.g. Aunt Linda" required>
+        </label>
 
-      <p class="note">Full-resolution originals are best &mdash; no need to shrink them first.</p>
+        <label class="dropzone" id="up-drop">
+          <input type="file" id="up-files" accept="image/*,video/*,.heic,.heif" multiple>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/></svg>
+          <strong>Tap to choose photos &amp; videos</strong>
+          <span class="hint">or drag them here &middot; up to 35&nbsp;MB each</span>
+        </label>
+
+        <ul class="up-list" id="up-list" aria-live="polite"></ul>
+
+        <p class="up-message" id="up-message" role="status"></p>
+
+        <button type="submit" class="button" id="up-submit" disabled>Upload</button>
+      </form>
+
+      <p class="note">Full-resolution originals are best &mdash; no need to shrink them first. Long videos (over about a minute) are too big for this page; send those to us directly.</p>
 
       <hr class="rule">
       <p class="lede">Want to see what everyone else captured?</p>
@@ -78,13 +97,6 @@
   </footer>
 
   <script src="../js/site.js"></script>
-  <script>
-    (function () {
-      var b = document.getElementById("upload-button");
-      var url = b.getAttribute("data-upload-url");
-      if (url) { b.href = url; }
-      else { b.textContent = "Upload opening soon"; b.setAttribute("aria-disabled", "true"); b.removeAttribute("href"); }
-    })();
-  </script>
+  <script src="../js/upload.js"></script>
 </body>
 </html>
