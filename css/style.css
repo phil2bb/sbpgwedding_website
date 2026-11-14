@@ -132,9 +132,14 @@ h1, h2, h3 {
   object-position: center 60%;
 }
 
-/* wide screens crop the portrait photo hard; aim higher so faces sit below the text */
+/* wide screens crop the portrait photo hard. js/hero.js fine-tunes the crop so
+   faces sit just below the text; this is the fallback, plus tighter text. */
 @media (min-aspect-ratio: 1/1) {
   .hero > img { object-position: center 30%; }
+  .hero .copy { padding-top: clamp(24px, 5vh, 56px); }
+  .hero h1 { font-size: clamp(2.4rem, 4.4vw, 4rem); margin-bottom: 0.25em; }
+  .hero p { font-size: clamp(1.05rem, 1.4vw, 1.25rem); max-width: 54ch; margin-bottom: 0.9em; }
+  .hero .cta { font-size: clamp(1.6rem, 3vw, 2.8rem); }
 }
 
 .hero::after {
